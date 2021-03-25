@@ -21,7 +21,6 @@ class Donut :  FloatsAndInts
     public:
 void GetDonut()
 {
-    cout << "^[[2J";
     while(true)
     {
         memset(b, 32, 1760);
@@ -49,7 +48,7 @@ void GetDonut()
               }
          }     
     }
-    cout << "^[[H";
+    cout << " ";
     for (k = 0; k < 1761; k++) {
               putchar(k % 80 ? b[k] : 10);
               A += 0.00004;
