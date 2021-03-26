@@ -1,7 +1,3 @@
-/*I use a source code of this guys:
-Haelwenn (lanodan) Monnier <contact@hacktivis.me>
-Andy Sloane https://www.a1k0n.net/2011/07/20/donut-math.html
-*/
 #include <algorithm>
 #include <cstdlib>
 #define _POSIX_C_SOURCE 200809L
