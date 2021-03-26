@@ -1,12 +1,53 @@
+/*I use a source code of this guys:
+Haelwenn (lanodan) Monnier <contact@hacktivis.me>
+Andy Sloane https://www.a1k0n.net/2011/07/20/donut-math.html
+*/
+#include <algorithm>
+#include <cstdlib>
+#define _POSIX_C_SOURCE 200809L
 #include <iostream>
 #include <cmath>
 #include <string.h>
 #include <unistd.h>
+#include <stdio.h>
 
 using namespace std;
 
+char* getCmdOption(char ** begin, char ** end, const std::string & option)
+{
+    char ** itr = find(begin, end, option);
+    if (itr != end && ++itr != end)
+    {
+        return *itr;
+    }
+    return 0;
+}
+
+bool cmdOptionExists(char** begin, char** end, const std::string& option)
+{
+    return std::find(begin, end, option) != end;
+}
+
+
+class RainBow
+{
+    public:
+void rainbow(double freq, int i) {
+	int red, green, blue;
+	double pi = 3.14159;
+
+	red = sin(freq*i + 0) * 127 + 128;
+	green = sin(freq*i + 2*pi/3) * 127 + 128;
+	blue = sin(freq*i + 4*pi/3) * 127 + 128;
+
+	printf("[38;2;%02d;%02d;%02dm", red, green, blue);
+	// TODO: Replace to sprintf?
+    }    
+};
+
 class FloatsAndInts
-{   public:
+{   
+    public:
         float A = 0, B = 0;
         float i, j;
         int k;
@@ -19,8 +60,31 @@ class FloatsAndInts
 class Donut :  FloatsAndInts
 {
     public:
-void GetDonut()
+        RainBow rnw;
+        void PutRainbow()
+        {
+            double freq = 0.1;
+      for (k = 0; k < 1761; k++)
+      {
+               rnw.rainbow(freq, k);
+               putchar(k % 80 ? b[k] : 10);
+               A += 0.00004;
+               B += 0.00002;
+      }
+        }
+
+void PutWhite()
 {
+      for (k = 0; k < 1761; k++)
+      {
+                putchar(k % 80 ? b[k] : 10);
+                A += 0.00004;
+                B += 0.00002;
+      }
+}
+void GetDonut(bool RainBOW)
+{
+    printf("[2J");
     while(true)
     {
         memset(b, 32, 1760);
@@ -48,20 +112,33 @@ void GetDonut()
               }
          }     
     }
-    cout << " ";
-    for (k = 0; k < 1761; k++) {
-              putchar(k % 80 ? b[k] : 10);
-              A += 0.00004;
-              B += 0.00002;
-         }
+    printf("[H");
+    RainBow rnw;
+    double freq = 0.1;
+    if (RainBOW)
+    {
+        PutRainbow();
+    }
+    else{
+    PutWhite();
+    }
          usleep(30000);
 }
 }
 };
 
-int main(){
+int main(int argc, char * argv[]){
     Donut don;
-    don.GetDonut();
+    bool RainBOW = false;
+    if(cmdOptionExists(argv, argv+argc, "-h")){
+        cout << "Usage: donut [FLAGS]\nDisplay an animated donut\nFlags:\n1.-h display this screen\n2.-r display a rainbow donut" << endl;
+        exit(0);
+ }
+    if(cmdOptionExists(argv, argv+argc, "-r"))
+            {
+            RainBOW = true;
+            }
+    don.GetDonut(RainBOW);
     return 0;//just have fun with classes
 }
 
