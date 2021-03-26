@@ -20,10 +20,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-urli]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![GPLv3 License][license-shield]][license-url]
 
 
 
@@ -71,12 +67,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://e)
-
 Simple donut in console with rainbow mode
 
 ### Built With
-* This beutiful README https://github.com/othneildrew
+* This beautiful README https://github.com/othneildrew
 * lolcat.c Haelwenn (lanodan) Monnier <contact@hacktivis.me>
 * donut.c Andy Sloane https://www.a1k0n.net/2011/07/20/donut-math.html
 
@@ -106,22 +100,22 @@ This app does not have any spetial prerequisites
    ```
 3. Run install.sh 
    ```sh
-   chmod +x install.sh; ./install.sh
+   chmod +x install.sh && ./install.sh
    ```
 4. All done!
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 Sorry but now you can use only unix style flags.
-1. For see a help information run
+1. For see a help information run:
    ```sh 
    donut -h
    ```
-2. For non-colored mode run
+2. For non-colored mode run:
    ```sh
    donut 
    ```
-3. For rainbow mode run 
+3. For rainbow mode run:
    ```sh
    donut -r
    ```
